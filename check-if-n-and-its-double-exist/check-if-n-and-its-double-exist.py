@@ -1,9 +1,14 @@
 class Solution:
     def checkIfExist(self, arr: List[int]) -> bool:
         arr.sort()
-        for i in range(len(arr)-1):
-            for j in range(i+1,len(arr)):
-                if arr[i]*2 == arr[j] or arr[i] / 2 == arr[j]:
-                    return True
+        arr_set = set()
+        for i in arr:
+            if i*2 in arr_set:
+                return True
+            elif i % 2 == 0 and i // 2 in arr_set:
+                return True
+            else:
+                arr_set.add(i)
+                
         return False
         
