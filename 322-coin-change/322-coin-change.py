@@ -7,13 +7,13 @@ class Solution:
             if i == len(coins):
                 return math.inf
             
-            ans = dp(i+1, amount)  # Skip ith coin
-            if amount >= coins[i]:  # Used ith coin
-                ans = min(ans, dp(i, amount - coins[i]) + 1)
-            return ans
+            mincoins = dp(i+1, amount)  
+            if amount >= coins[i]:  
+                mincoins = min(mincoins, dp(i, amount - coins[i]) + 1)
+            return mincoins
         
-        ans = dp(0, amount)
-        if ans != math.inf:
-            return ans
+        mincoins = dp(0, amount)
+        if mincoins != math.inf:
+            return mincoins
         else:
             return -1
