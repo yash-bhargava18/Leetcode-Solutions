@@ -16,12 +16,12 @@ class Solution:
         
         while(low <= high):
             mid = low + (high - low) // 2
-            
-            if(reader.get(mid) ==  target):
+            if(reader.get(mid) == target):
                 return mid
-            elif (reader.get(mid) > target):
+            elif(reader.get(mid) > target):
                 high = mid-1
             else:
-                low = mid+1
+                low = mid + 1
+        
         return -1
             
