@@ -1,15 +1,17 @@
 class Solution:
     def findMin(self, nums) -> int:
-        left,right=0,len(nums)-1
-        mid=(left+right)//2
-        while right-left>1:
-            if nums[mid]>nums[left]:
-                if nums[mid]<nums[right]:
-                    right=mid-1         #case2
-                else:
-                    left=mid+1          #case1   
-            else:
-                right=mid               #case3
-            mid=(left+right)//2
-        return min(nums[mid],nums[right])
+        low = 0
+        size = len(nums) - 1
+        high = size
         
+        while(low <= high):
+            if(nums[low] < nums[high]):
+                return nums[low]
+            mid = low + (high-low) // 2
+            if((mid == 0 or nums[mid] < nums[mid-1]) and (mid == size or nums[mid] < nums[mid+1])):
+                return nums[mid]
+            elif(nums[low] <= nums[mid]):
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
