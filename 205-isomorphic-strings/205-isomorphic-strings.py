@@ -1,15 +1,19 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        s_map, t_map = dict(), dict()
+        h1 = {}
+        h2 = {}
+        
         for i in range(len(s)):
-            if s[i] in s_map:
-                if s_map[s[i]] != t[i]:
+            if s[i] in h1:
+                if h1[s[i]] != t[i]:
                     return False
             else:
-                s_map[s[i]] = t[i]
-            if t[i] in t_map:
-                if t_map[t[i]] != s[i]:
+                h1[s[i]] = t[i]
+            
+            if(t[i] in h2):
+                if h2[t[i]] != s[i]:
                     return False
             else:
-                t_map[t[i]] = s[i]
+                h2[t[i]] = s[i]
+            
         return True
